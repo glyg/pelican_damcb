@@ -1,20 +1,28 @@
-<!--
-.. link:
-.. description:
-.. tags:
-.. date: 2013/11/05 10:39:47
-.. title: About DamCB
-.. slug: about-us
--->
+Title: About DamCB
+Date: 2014-09-01 14:20
+Modified: 2014-09-06 14:20
+Category: Buisness
+Tags: about, damcb
+Slug: aboutus
+Authors: Guillaume Gay
+Summary: About us
 
-![The DamCB logo](logo.png 'The DamCB logo')
+
+
+
+
 
 DamCB is a one person company under the French status of 'Entreprise Individuelle' founded by Guillaume Gay.
 We are currently located in Marseille.
 
 ## About Guillaume
 
-![A photo of me](portrait_gg.jpg "A photo of me where I look thoughtfull")
+
+<!-- ![Alt Text]({filename}/images/han.jpg) -->
+<!-- {tag}tagname -->
+
+
+![A photo of me]({filename}/images/portrait_gg.jpg "A photo of me where I look thoughtfull")
 
 
 My name is Guillaume Gay. I am currently working as an independent
@@ -62,6 +70,8 @@ basic physics to biology and medecine students, and learned Spanish.
 
 
 ## Principal publications
+
+
 
 Gay, G., Courtheoux, T., Reyes, C., Tournier, S., and Gachet,
   Y. **2012**. _A stochastic model of kinetochore–microtubule attachment

@@ -3,11 +3,15 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Guillaume Gay'
-SITENAME = u'DamCB -- Data analysis and modelling for Cell Biology'
-SITEURL = ''
+SITENAME = u'DamCB'
+SITEURL = 'http://damcb.com'
+#SITEURL = 'http://damcb.com/index.html'
+# Uncomment following line if you want document-relative URLs when developing
+RELATIVE_URLS = True
+
+
 
 PATH = 'content'
-
 TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = u'en'
@@ -18,16 +22,36 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
+LINKS = (('SciPy', 'http://scipy.org/'),
          ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+         ('Graph-tool', 'http://graph-tool.skewed.de/'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('GitHub', 'https://github.org/DamCB'),
+          ('Twitter', 'https://twiter.com/elagachado'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 4
+THEME = 'notmyidea'
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+
+STATIC_PATHS = ['images']
+TYPOGRIFY = True
+# CATEGORY_SAVE_AS = None
+# PAGINATION_PATTERNS = (
+#     (1, '{base_name}/', '{base_name}/index.html'),
+#     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),)
+
+
+
+
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+
+DELETE_OUTPUT_DIRECTORY = True
+
+NEWEST_FIRST_ARCHIVES = True
+
+# Following items are often useful when publishing
+
+DISQUS_SITENAME = "damcellbiology"
+#GOOGLE_ANALYTICS = ""

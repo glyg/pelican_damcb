@@ -1,0 +1,6 @@
+output
+output
+cache
+*.*~
+*.py[co]
+.emacs.desktop
