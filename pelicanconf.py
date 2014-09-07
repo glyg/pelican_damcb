@@ -31,7 +31,7 @@ SOCIAL = (('GitHub', 'https://github.org/DamCB'),
           ('Twitter', 'https://twiter.com/elagachado'),)
 
 DEFAULT_PAGINATION = 4
-THEME = 'notmyidea'
+THEME = 'pelican-bootstrap3'#''notmyidea'
 
 
 STATIC_PATHS = ['images']
