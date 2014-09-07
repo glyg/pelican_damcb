@@ -1,4 +1,6 @@
-The primary author of this project is:
+This theme is an adaptation of the pelican-bootstrap3 theme by [Guillaume Gay](https://github.com/glyg) aka glyg
+
+The primary author of Pelican Bootstrap 3 is:
 
 - [Daan Debie](https://github.com/DandyDev) aka `DandyDev`
 
