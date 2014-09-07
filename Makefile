@@ -12,10 +12,10 @@ FTP_HOST=localhost
 FTP_USER=anonymous
 FTP_TARGET_DIR=/
 
-SSH_HOST=localhost
-SSH_PORT=22
-SSH_USER=root
-SSH_TARGET_DIR=/var/www
+SSH_HOST=damcb.com
+SSH_PORT=333
+SSH_USER=admin
+SSH_TARGET_DIR=/srv/datadisk01/pelican_damcb
 
 S3_BUCKET=my_s3_bucket
 

@@ -7,7 +7,7 @@ SITENAME = u'DamCB'
 SITEURL = 'http://damcb.com'
 #SITEURL = 'http://damcb.com/index.html'
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+#RELATIVE_URLS = True
 
 PATH = 'content'
 TIMEZONE = 'Europe/Paris'
@@ -27,6 +27,8 @@ LINKS = (('SciPy', 'http://scipy.org/'),
 # Social widget
 SOCIAL = (('GitHub', 'https://github.org/DamCB'),
           ('Twitter', 'https://twiter.com/elagachado'),)
+
+GITHUB_USER = 'glyg'
 
 THEME = 'themes/glyg'#''notmyidea'
 BOOTSTRAP_THEME = 'flatly'
@@ -74,5 +76,10 @@ NEWEST_FIRST_ARCHIVES = True
 
 DISQUS_SITENAME = "damcellbiology"
 #GOOGLE_ANALYTICS = ""
-
-EXTRA_HEADER = open('_nb_header_minimal.html').read().decode('utf-8')
+import os
+if not os.path.exists('_nb_header.html'):
+    import warnings
+    warnings.warn("_nb_header.html not found. "
+                  "Rerun make html to finalize build.")
+else:
+    EXTRA_HEADER = open('_nb_header.html').read().decode('utf-8')
