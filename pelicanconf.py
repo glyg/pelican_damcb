@@ -26,12 +26,13 @@ LINKS = (('SciPy', 'http://scipy.org/'),
 
 # Social widget
 SOCIAL = (('GitHub', 'https://github.org/DamCB'),
-          ('Twitter', 'https://twiter.com/elagachado'),)
+          ('Twitter', 'https://twiter.com/elagachado'),
+          ('LinkedIn', 'https://www.linkedin.com/pub/guillaume-gay/27/a22/492'),)
 
 GITHUB_USER = 'glyg'
 
 THEME = 'themes/glyg'#''notmyidea'
-BOOTSTRAP_THEME = 'flatly'
+#BOOTSTRAP_THEME = 'flatly'
 BOOTSTRAP_THEME = 'cosmo'
 
 SITELOGO = 'images/logo_blackbg.png'
