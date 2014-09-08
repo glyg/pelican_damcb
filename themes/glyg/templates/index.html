@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+
+<hr/>
 <div class="jumbotron">
   <h2>Welcome to {{ SITENAME }}</h2>
   <p>{{ ABOUT_ME }}</p>
@@ -38,7 +40,6 @@
     <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">more ...</a>
   </div>
 </article>
-<hr/>
 {% endfor %}
 {% endif %}
 {% include 'includes/pagination.html' %}
