@@ -2,8 +2,7 @@ title: Website refurbished
 slug: new-website
 date:
 tags:pelican, nikola
-summary: I crashed my [nikola](http://getnikola.com) static installation - which was far from stable anyway,
-	     and went for [pelican](http://blog.getpelican.com/).
+summary: I crashed my [nikola](http://getnikola.com) static installation - which was far from stable anyway, and went for [pelican](http://blog.getpelican.com/).
 
 ## Welcom to the fresh DamCB website!
 
