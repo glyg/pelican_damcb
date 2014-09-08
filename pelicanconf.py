@@ -31,12 +31,29 @@ SOCIAL = (('GitHub', 'https://github.org/DamCB'),
 
 GITHUB_USER = 'glyg'
 
+
+DISPLAY_PAGES_ON_MENU = False
+MENUITEMS = (('About DamCB', '/pages/aboutus.html'),
+             ('Projects', '/pages/projects.html'),
+             ('Services', '/pages/what-we-do.html'),
+             ('Tools', '/pages/tools.html'),
+             ('Contact', '/pages/contact.html'),)
+
+### Those are displayed on the index page, with one image, a title and a link
+DISPLAY_HEROITEMS = True
+HEROITEMS = (('images/logo_modeling.png', 'Projects', '/pages/projects.html'),
+             ('images/logo_data.png', 'Services', '/pages/what-we-do.html'),
+             ('images/logo_python.png', 'Tools', '/pages/tools.html'),)
+
 THEME = 'themes/glyg'#''notmyidea'
 #BOOTSTRAP_THEME = 'flatly'
 BOOTSTRAP_THEME = 'cosmo'
 
 SITELOGO = 'images/logo_blackbg.png'
 HIDE_SITENAME = True
+
+## We don't need those (there are too few for now)
+DISPLAY_TAGS_ON_SIDEBAR = False
 
 STATIC_PATHS = ['images']
 TYPOGRIFY = True

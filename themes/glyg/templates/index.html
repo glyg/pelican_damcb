@@ -1,3 +1,53 @@
-{% extends "article_list.html" %}
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h2>Welcome to {{ SITENAME }}</h2>
+  <p>{{ ABOUT_ME }}</p>
+  <ul class="nav nav-pills">
+    {% if DISPLAY_HEROITEMS %}
+    {% for image, title, link in HEROITEMS %}
+     <li>
+       <div class="panel default-panel">
+	 <div class="panel-heading">
+	   <a href="{{ link }}">
+	     <img alt="{{ title }}" align="center" src="{{ SITEURL }}/{{ image }}"/></a>
+	 </div>
+	 <div class="panel-body">
+	   <a  href="{{ link }}"><h4>{{ title }}</h4></a>
+	 </div>
+     </li>
+     {% endfor %}
+     {% endif %}
+  </ul>
+</div>
+
+<div class="page-header">
+  <h1 id="blogposts"> News </h1>
+</div>
+{% if articles %}
+{% for article in (articles_page.object_list if articles_page else dates) %}
+<article>
+  <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+  {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
+  <div class="well well-sm">
+    {% include "includes/article_info.html" %}
+  </div>
+  {% endif %}
+  <div class="summary">{{ article.summary }}
+    {% include 'includes/comment_count.html' %}
+    <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">more ...</a>
+  </div>
+</article>
+<hr/>
+{% endfor %}
+{% endif %}
+{% include 'includes/pagination.html' %}
+{% endblock content %}
 
 {% block canonical_rel %}<link rel="canonical" href="{{ SITEURL }}">{% endblock %}
+
+<!-- <button type="button" class="btn btn-default" title="{{ title }}"> -->
+<!-- </button> -->
+
+<!--  data-original-title="{{ title }}" -->
+<!-- data-toggle="tooltip" data-placement="bottom" -->
