@@ -1,12 +1,14 @@
 title: Setting up my python working environment
-tags:scipy, howto
-date: 2013-10-29 12:38:15
+tags: scipy, howto
+date: 2014-09-15 12:38:15
 slug: setting-up-a-scientific-python-working-environment
 
 
-Hey there... Here is the procedure I used to have a nice scientific
-python stack, fitting my needs anyways, starting with a fresh linux
-Mint 15 install.
+**Updated !!** Hey there... Here is the procedure I used to have a
+nice scientific python stack, fitting my needs anyways, starting with
+a fresh linux Mint 17 install. Please note that things got a _lot_
+simpler with the latest
+[anaconda](https://store.continuum.io/cshop/anaconda/) releases.
 
 <!-- TEASER_END -->
 
@@ -43,15 +45,16 @@ in emacs, such as syntax checks, completion etc.
 	cd .emacs.d
 	git clone git://github.com/gabrielelanaro/emacs-for-python.git
 
-Also add this to `.emacs`:
+Also add this to `.emacs` (changing `USERNAME` to your user name...):
 
 ``` lisp
-(load-file "/home/guillaume/.emacs.d/emacs-for-python/epy-init.el")
+(load-file "/home/USERNAME/.emacs.d/emacs-for-python/epy-init.el")
 (epy-setup-checker "pyflakes %f")
 (epy-setup-ipython)
 (require 'highlight-indentation)
 (add-hook 'python-mode-hook 'highlight-indentation)
 
+;;; Bellow is a header with what's need for python 2.7 compatibility
 (defun tv-insert-python-header ()
   "insert python header at point"
   (interactive)
@@ -64,102 +67,77 @@ Also add this to `.emacs`:
 (global-set-key (kbd "C-c e p") 'tv-insert-python-header)
 ```
 
-### python setuptools and compilers
+### Compilers
 
 ``` bash
-sudo apt-get install python-setuptools build-essential python-pip\
-	python-virtualenv python3-setuptools python3-pip\
-	gfortran gfortran-multilib
+sudo apt-get install build-essential gfortran gfortran-multilib
 ```
+
 
 ## Using Python 3
 
+Since I first wrote this post, I started using [anaconda](https://store.continuum.io/cshop/anaconda/) for my basic installation. It really eases the management and creation of virtual environments, updates and package management. In a recent update, you can have a 'native' python 3.4 install.
+
+
+After downloading anaconda from the above link (they ask for your
+email but that doesn't translate into flows of spam), just run the
+installer :
+
+```bash
+cd directory/where/youdownloaded/thefile
+### you might need to chmod the script
+chmod +x Anaconda-2.0.1-Linux-x86_64.sh
+./Anaconda-2.0.1-Linux-x86_64.sh
+### update your bashrc to take into account the new paths
+source ~/.bashrc
+```
+
+
 ### Creating a Python 3 virtual environment
 
-pyvenv is now distributed with the library
-
-``` bash
-cd ~
-pyvenv3-3 --system-site-packages python3
-source python3/bin/activate
+Easy as pie:
+```bash
+conda create -n python3 python=3 anaconda
 ```
-We also need to install distribute and pip in the virtual environment
+Now you can use this new environment by tiping:
 
-``` bash
-wget http://python-distribute.org/distribute_setup.py python3
-distribute_setup.py easy_install3 pip
+```bash
+source activate python3
 ```
 
-### Scientific python (3) here I come
+Your terminal prompt should now be prepended with a `(python3)` string
 
-``` bash
-sudo apt-get install libfreetype6-dev libpng12-dev
-sudo apt-get install python3-pyqt4 python3-pyside python3-sip\
-	python3-gi python3-gi-cairo python3-cairo\ # Those are for GTK+ (not so obvious, is it?)
+Note that `python3` here is just a name, you can use anything you want. Also some advocate the use of one virtual environment for each project... I'm not very fond of this strategy.
 
-sudo apt-get install liblapack3 liblapack3-dev libblas3 libblas3-dev\
-	libatlas3-base liblapack3gf libblas3gf libatlas3gf-base \
-	libatlas-base-dev libatlas-dev liblapack3-dev  libhdf5-7 libhdf5-dev
+If you need recent packages, that might not be included in the conda distribution, you can use `pip` from whithin the virtual environment, as so:
+
 ```
-
-
-There are three recommanded ways to install python packages, from the
-easyest to the "edgiest".
-
- * Using the distribution provided packages (which will be seen in the
-   virtualenv thanks to the `--system-site-packages` flag above)
- * Using pip install (which will install them in the virtual environment)
- * Getting the latest versions from github
-
-``` bash
-pip-3.3 install numpy
-pip-3.3 install scipy
-pip-3.3 install numexpr cython tables
-pip-3.3 install matplotlib
-pip-3.3 install pyzmq jinja2
-pip-3.3 install ipython
-pip-3.3 install pandas
-pip-3.3 install scikit-image scikit-learn
+pip install --upgrade scikit-image
 ```
 
 We use Christoph Gohlke's fabulous `tifffile.py` to parse tifffiles.
 
 ``` bash
 wget http://www.lfd.uci.edu/~gohlke/code/tifffile.py
-tifffile.py ~/python3/lib/python3.3/site-packages/
+mv tifffile.py ~/python3/lib/python3.3/site-packages/
 ```
+
+The whole procedure is way easier than it use to be in the old days. Most of the time they ship the latest stable of the packages. Furthermore, it is common practice in the exosystem to test ones package through travis continuous integration by installing MiniConda and the required packages... So you end up with a vetted set of libraries.
+
 
 
 ## Using Python 2
 
 ### Creating a Python 2 virtual environment
 
+You guessed it:
 
-``` bash
-sudo apt-get install python-virtualenv
-virtualenv --system-site-packages python2
-source python3/bin/activate
+```bash
+conda create -n python2 python=2.7 anaconda
 ```
-Distutils and pip are installed automatically
 
+I think if you just say `python=2` it will install version 2.6, which you only want if you have to develop with it for legacy reasons (but even debian stable ships 2.7, so that should be a rare occurence by now).
 
-### Scientific python (2) here I come
-
-Here, as I want to go a bit faster, and as admitedly this version of
-python willl be supported by less cutting edge packages, I install base packages
-through apt (ok except IPython because it's really moving rapidly right now):
-
-``` bash
-sudo apt-get install python-gtk2 python-pyside python-pyqt
-sudo apt-get install python-numpy python-scipy python-matplotlib
-
-pip install pyzmq jinja2 tornado ipython
-pip install numexpr cython tables
-pip install pandas
-pip install scikit-image scikit-learn
-wget http://www.lfd.uci.edu/~gohlke/code/tifffile.py
-mv tifffile.py ~/python2/lib/python2.7/
-```
 
 ## [Graph tool](http://graph-tool.skewed.de)
 
@@ -185,4 +163,23 @@ sudo apt-get update
 sudo apt-get install python3-graph-tool python-graph-tool
 ```
 
-That should be it...
+### link the packages to the respective environments
+
+As `graph-tool` is not included (yet?) in conda, and the compilation is, well, complicated, we have to link the library to our packages:
+
+```bash
+ln -s /usr/lib/python3/dist-packages/graph_tool /home/USER/anaconda/envs/python3/lib/python3.4/site-packages/graph_tool
+ln -s /usr/lib/python2.7/dist-packages/graph_tool /home/USER/anaconda/envs/python2/lib/python2.7/site-packages/graph_tool
+```
+
+### Some more stuffs
+
+I added this in my `.bashrc` for git clarity (thanks to Hadrien Mary
+aka @hadim):
+
+```bash
+## git status in prompt
+export PS1='\[\033[01;32m\]\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+# export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+export GIT_PS1_SHOWDIRTYSTATE=1
+```

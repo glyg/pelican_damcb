@@ -90,6 +90,10 @@ DELETE_OUTPUT_DIRECTORY = True
 
 NEWEST_FIRST_ARCHIVES = True
 
+
+SUMMARY_END_MARKER = "<!-- TEASER_END -->"
+
+
 # Following items are often useful when publishing
 
 DISQUS_SITENAME = "damcellbiology"
