@@ -5,6 +5,7 @@
 <aside>
     <section>
         <ul class="list-group list-group-flush">
+            {% include 'includes/links.html' %}
             {% if SOCIAL %}
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
                   <ul class="list-group" id="social">
@@ -68,11 +69,10 @@
                         </li>
                     {% endfor %}
                     </ul>
-                </li>    
+                </li>
             {% endif %}
             {% include 'includes/github.html' %}
             {% include 'includes/twitter_timeline.html' %}
-            {% include 'includes/links.html' %}
 
         </ul>
     </section>

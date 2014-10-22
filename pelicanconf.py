@@ -20,9 +20,11 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS = (('SciPy', 'http://scipy.org/'),
-         ('Python.org', 'http://python.org/'),
-         ('Graph-tool', 'http://graph-tool.skewed.de/'),)
+LINKS = (
+    ('Magali Suzanne group', 'http://')
+    ('SciPy', 'http://scipy.org/'),
+    ('Python.org', 'http://python.org/'),
+    ('Graph-tool', 'http://graph-tool.skewed.de/'),)
 
 # Social widget
 SOCIAL = (('GitHub', 'https://github.org/DamCB'),
@@ -80,7 +82,8 @@ DEFAULT_PAGINATION = 10
 #     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),)
 
 
-ABOUT_ME = '''We offer free and open source software services to help biologists get the most out of their experiments.'''
+ABOUT_ME = '''Data analysis and modeling for Cell Biology
+We offer free and open source software services to help biologists get the most out of their experiments.'''
 
 AVATAR=False#'images/logo_blackbg.png'
 
