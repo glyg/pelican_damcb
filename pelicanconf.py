@@ -21,7 +21,9 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS = (
-    ('Magali Suzanne group', 'http://')
+    ('Magali Suzanne group', 'http://www-lbcmcp.ups-tlse.fr/Nouveau_site/modeles/EquipeSuzanne-Accueil.htm'),
+    ('Xiaobo Wang group', 'http://www-lbcmcp.ups-tlse.fr/'),
+    ('Tournier & Gachet group', 'http://s.pombe.free.fr'),
     ('SciPy', 'http://scipy.org/'),
     ('Python.org', 'http://python.org/'),
     ('Graph-tool', 'http://graph-tool.skewed.de/'),)
