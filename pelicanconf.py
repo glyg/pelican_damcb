@@ -63,7 +63,9 @@ NOTEBOOK_DIR = 'downloads/notebooks'
 
 
 PLUGIN_PATHS = ['../Pelican/pelican-plugins/', ]
-PLUGINS = ['summary', 'liquid_tags.img', 'liquid_tags.video',
+PLUGINS = ['summary',
+           'liquid_tags.img',
+           'liquid_tags.video',
            'liquid_tags.vimeo',
            'liquid_tags.youtube',
            'liquid_tags.include_code',
