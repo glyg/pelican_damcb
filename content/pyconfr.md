@@ -10,6 +10,11 @@ qui se déroulait ce week end (les sprints sont toujours en
 court). C'était chouette, et je voudrais fixer un ou deux trucs ici -
 surtout pour avoir une trace pour plus tard.
 
+Ma propre présentation c'est bien passée, je pense. J'espère avoir été
+à peu près clair, après j'aurai peut-être dû être plus technique, mais
+c'est difficile sans expliquer la biologie avant.
+
+
 D'abord merci beaucoup à Xavier qui a nous a conduit de Marseille à
 Lyon et retour tout en souplesse, et à son copilote Victor...
 
