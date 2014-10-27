@@ -72,16 +72,16 @@ effet très innatendu pour moi.
 
 J'ai bien aimé la présentation de Yannick Chopin, qui montre notemment
 que Python et le stack scipy est le standard en astrophysique, avec
-[http://www.astropy.org/](astropy) comme lieu commun.
+[astropy](http://www.astropy.org/) comme lieu commun.
 
 Dans _Du Python qui ne manque pas d'air_ Romaric David a présenté
 l'utilisation de python comme glue pour configurer freefem++ à partir
 d'une spécification en fichier texte d'une sale de serveur, pour
 calculer les flux d'air et éviter la surchauffe. Je pense que
-[http://www.openscad.org/](OpenSCAD) pourrait l'aider à dessiner la
+[OpenSCAD](http://www.openscad.org/) pourrait l'aider à dessiner la
 salle de manière plus simple...
 
-Nicolas Rougier m'a convaincu d'essayer [http://vispy.org](Vispy),
+Nicolas Rougier m'a convaincu d'essayer [Vispy](http://vispy.org),
 surtout pour la visualisation des simulations d'épithélium, qui sont
 impossible à afficher dynamiquement avec matplotlib. Blender c'est
 bien, mais le développement est vraiment trop pénible (redémarer
@@ -89,7 +89,7 @@ Blender à chaque bug par exemple). Je suis aussi impatient de voir ce
 que ce projet donnera avec WebGL.
 
 Une autre bibliothèque que je veux intégrer dans mes projets
-prochainement est [http://sympy.org](sympy), présentée par Kamel Ibn
+prochainement est [sympy](http://sympy.org), présentée par Kamel Ibn
 Aziz Derouiche, et qui est beaucoup plus riche, notemment pour des
 aspects de mécanique, que ce que je pensais.
 
