@@ -84,6 +84,7 @@ DEFAULT_PAGINATION = 10
 
 
 ABOUT_ME = '''Data analysis and modeling for Cell Biology
+
 We offer free and open source software services to help biologists get the most out of their experiments.'''
 
 AVATAR=False#'images/logo_blackbg.png'
