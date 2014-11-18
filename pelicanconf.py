@@ -107,7 +107,7 @@ SUMMARY_END_MARKER = "<!-- TEASER_END -->"
 # Following items are often useful when publishing
 
 DISQUS_SITENAME = "damcellbiology"
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS = "UA-56836763-1"
 import os
 if not os.path.exists('_nb_header.html'):
     import warnings
