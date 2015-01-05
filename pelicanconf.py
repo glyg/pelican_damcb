@@ -83,8 +83,7 @@ DEFAULT_PAGINATION = 10
 #     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),)
 
 
-ABOUT_ME = '''Data analysis and modeling for Cell Biology
-
+ABOUT_ME = '''Data analysis and modeling for Cell Biology\n
 We offer free and open source software services to help biologists get the most out of their experiments.'''
 
 AVATAR=False#'images/logo_blackbg.png'

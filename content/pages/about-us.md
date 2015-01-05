@@ -10,16 +10,10 @@ Summary: About us
 
 
 
-
-
 DamCB is a one person company under the French status of 'Entreprise Individuelle' founded by Guillaume Gay.
 We are currently located in Marseille.
 
 ## About Guillaume
-
-
-<!-- ![Alt Text]({filename}/images/han.jpg) -->
-<!-- {tag}tagname -->
 
 
 ![A photo of me]({filename}/images/portrait_gg.jpg "A photo of me where I look thoughtfull")

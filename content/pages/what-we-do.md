@@ -1,4 +1,4 @@
-Title: Service offering
+Title: Services
 Date: 2014-09-05 13:04:52
 modified: 2014-09-06 10:20
 tags:services, data analysis, consulting
@@ -8,14 +8,35 @@ summary:welcome every body
 
 <!--category:  -->
 
+<!-- <hr/> -->
+<!-- <div class="row"> -->
+<!--   <div class="col-lg-12"> -->
+<!--     <div class="bs-component"> -->
+<!--       <\!-- <h3><em>Bienvenus</em></h3> -\-> -->
+<!--       <blockquote class="pull-right"> -->
+<!-- 	<em>DamCB fournis des services en -->
+<!-- 	logiciels libres pour permettre aux biologistes de tirer le -->
+<!-- 	meilleur parti de leurs données expérimentales.  Notre -->
+<!-- 	expertise technique réside dans le dévelopement -->
+<!-- 	de <strong>modélisations numérique</strong> -->
+<!-- 	et <strong>l'analyse de données</strong>.  Ces compétences -->
+<!-- 	sont appliquées dans divers projets en biologie cellulaire et -->
+<!-- 	du dévelopement.</em> -->
+<!--       </blockquote> -->
+<!--     </div> -->
+<!--   </div> -->
+<!--   <div class="col-lg-12"> -->
+<!--     <div class="bs-component"> -->
+<!--       <blockquote>DamCB offers free and open source sotware services to help biologists get the most out of their experiments. -->
+<!-- 	Our area of expertise is in the development of tailored <strong>data driven modeling</strong> -->
+<!-- 	and <strong>image analysis in 3D+t</strong> of living organisms, -->
+<!-- 	from the single cell to the epithelium. -->
+<!--       </blockquote> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- <hr/> -->
 
-> **Welcome**
->
-> We are a small company offering *free and open source software*
-> services to help biologists get the most out of their experiments. Our
-> area of expertise is in the development of tailored **image analysis
-> in 3D+t** and **data driven modelling** of living organisms, from the
-> single cell to the epithelium.
 
 ### Physical biology and modeling
 

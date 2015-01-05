@@ -4,7 +4,7 @@
 <hr/>
 <div class="jumbotron">
   <h2>Welcome to {{ SITENAME }}</h2>
-  <p>{{ ABOUT_ME }}</p>
+  {% include 'includes/aboutme.html' %}
   <ul class="nav nav-pills">
     {% if DISPLAY_HEROITEMS %}
     {% for image, title, link in HEROITEMS %}
