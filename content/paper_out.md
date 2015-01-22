@@ -17,6 +17,10 @@ research process.  The model itself relies on the marvelous scientific
 python ecosystem and its supporting community. Special thanks to Tiago
 for providing the [graph-tool](http://graph-tool.skewed.de/) library.
 
+The code is described in details in a series of Ipython Notebook that
+you can read
+[here](http://nbviewer.ipython.org/github/glyg/leg-joint/tree/master/notebooks/).
+
 Now for a brief summary on what we did:
 
 ### Apoptotic cells last stand - and its consequences for morphogenesis
@@ -25,10 +29,10 @@ _We showed that, far from being passively eliminated, apoptotic cells
 do actively influence their environment by increasing the surrounding
 tissue tension. Indeed, before they die, apopotic cells exert a force
 that transiently deform the apical surface of the epithelium. This
-force is then transmited to the neighbouring cells through an increase
-in tension which will in turn provoque a change in tissue shape._
+force is then transmitted to the neighbouring cells through an increase
+in tension which will in turn provoke a change in tissue shape._
 
-Apotosis is known for its role in morphogenesis, and more specifically
+Apoptosis is known for its role in morphogenesis, and more specifically
 in the formation of folds in various developmental contexts; yet the
 molecular mechanisms implied in those processes remain largely
 unknown. The formation of folds within an epithelium allows to pass
@@ -42,14 +46,14 @@ remodelling. Indeed, each apoptotic cells within the epithelium
 generates before it dies a force relying on the establishment of an
 apico-basal acto-myosin cable. This previously unknown cable drives a
 transitory deformation of the apical surface of the epithelium, which
-in turn drives a stabilisation of myosin II in the neighbouring cells
-at the adherens junctions level, as well as an increase in tissue
-tension. We also showed that the synergetic contribution of several
-apoptotic cells was necessary to create a myosin II stablisation in
+in turn drives a stabilization of myosin II in the neighbouring cells
+at the adherent junctions level, as well as an increase in tissue
+tension. We also showed that the synergistic contribution of several
+apoptotic cells was necessary to create a myosin II stabilization in
 the whole neighbouring tissue, a global increase in tension, cells
 apical constriction and eventually the fold formation.
 
-Finally, in order to test wether those apoptotic forces are indeed the
+Finally, in order to test whether those apoptotic forces are indeed the
 initial signal responsible for the change in tissue shape, we devised
 a 3D model of the leg disk epithelium, based on the pre-existing
 vertex model published by
