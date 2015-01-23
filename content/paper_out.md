@@ -2,7 +2,7 @@ title: The leg joint paper is out!
 slug: paper_out
 date:
 tags: drosophila, modelling
-summary: Our work on the role of apoptosis in morphogenesis is out today
+summary: Our work on the role of apoptosis in morphogenesis is out today!
 
 
 We did it! After nearly three years of work (the initial commit to the
@@ -22,6 +22,10 @@ you can read
 [here](http://nbviewer.ipython.org/github/glyg/leg-joint/tree/master/notebooks/).
 
 Now for a brief summary on what we did:
+
+**[edit 01/23]** there's a nice news and views
+  [here](http://dx.doi.org/10.1038/nature14198) where
+  [Claudia Vasquez and Adam Martin](http://web.mit.edu/martin-lab/research.html) review the biology and rise interesting questions.
 
 ### Apoptotic cells last stand - and its consequences for morphogenesis
 
