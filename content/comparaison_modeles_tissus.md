@@ -15,16 +15,16 @@ Basé principalement sur la revue de
 
 Trois grandes classes de modèles:
 
-1. Vertex
+1. Modèles de type _vertex_
 2. Modèle de Potts cellulaire
 3. Modèle en milieu continu
 
 
-### Vertex
+### Modèles de type _vertex_
 
 C'est le modèle utilisé actuellement pour les simulations de formation du pli.
 
-![Vertex model](3D_vertex_geometry.svg)
+![Vertex model](images/3D_vertex_geometry.svg)
 
 Aspects positifs:
 
@@ -38,7 +38,7 @@ Aspects négatifs:
 * Limité à des cellules jointives: pas de délamination, par exemple.
 * Tout se passe au niveau des jonctions.
 * Peu adapté à la prise en compte des événements baso-latéraux.
-* Difficile d'inclure des interaction hors du maillage.
+* Difficile d'inclure des interactions hors du maillage.
 * Physique peu détaillée.
 
 
@@ -65,7 +65,7 @@ Aspects négatifs:
 * "Loin" des détails bio-physiques des intéractions cellule-cellule
 * Grande souplesse dans la modélisation des intéractions
 
-![Cellular Potts model](potts_model.png)
+![Cellular Potts model](images/potts_model.png)
 
 ### Modèles continus
 
@@ -95,4 +95,4 @@ Aspects négatifs:
 * Gourmant en temps de calcul (et en temps d'optimisation)
 * La segementation n'est pas triviale (maillage régulier ou adaptatif, etc.)
 
-![Finite elements](finite_elements.png)
+![Finite elements](images/finite_elements.png)
