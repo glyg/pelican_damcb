@@ -5,7 +5,7 @@ tags: modeling, epithelium
 summary: Ce post a pour objectif de discuter les différentes stratégies de modélisation d'un tissu biologique.
 
 Ce texte est un travail en cours. N'hésitez pas à commenter ci-dessous pour m'aider à l'améliorer.
-
+J'essaierai peu à peu de sortir du style télégraphique.
 
 
 ## Comparaison des différentes classes de modèles de tissus
@@ -96,3 +96,10 @@ Aspects négatifs:
 * La segementation n'est pas triviale (maillage régulier ou adaptatif, etc.)
 
 ![Finite elements](images/finite_elements.png)
+
+
+Reste à aborder:
+
+- [] Détailler la physique des méthodes en milieu continu
+- [] Inclure des exemples pour chaque méthode
+- [] Rédiger une introduction
