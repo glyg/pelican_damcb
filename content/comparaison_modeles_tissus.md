@@ -100,6 +100,6 @@ Aspects négatifs:
 
 Reste à aborder:
 
-- [] Détailler la physique des méthodes en milieu continu
-- [] Inclure des exemples pour chaque méthode
-- [] Rédiger une introduction
+- Détailler la physique des méthodes en milieu continu
+- Inclure des exemples pour chaque méthode
+- Rédiger une introduction
