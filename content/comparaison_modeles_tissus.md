@@ -4,6 +4,7 @@ date:
 tags: modeling, epithelium
 summary: Ce post a pour objectif de discuter les différentes stratégies de modélisation d'un tissu biologique.
 
+
 Ce texte est un travail en cours. N'hésitez pas à commenter ci-dessous pour m'aider à l'améliorer.
 J'essaierai peu à peu de sortir du style télégraphique.
 
@@ -13,11 +14,11 @@ J'essaierai peu à peu de sortir du style télégraphique.
 Basé principalement sur la revue de
 [L.A. Davidson et al. / Journal of Biomechanics 43 (2010) 63–70](http://dx.doi.org/10.1016/j.jbiomech.2009.09.010)
 
-Trois grandes classes de modèles:
+L.A Davidson et ses collègues distinguent trois grandes classes de modèles:
 
-1. Modèles de type _vertex_
-2. Modèle de Potts cellulaire
-3. Modèle en milieu continu
+1. Modèle de Potts cellulaire
+2. Modèles de type _vertex_
+3. Modèle en éléments finis
 
 
 ### Modèles de type _vertex_
@@ -40,8 +41,6 @@ Aspects négatifs:
 * Peu adapté à la prise en compte des événements baso-latéraux.
 * Difficile d'inclure des interactions hors du maillage.
 * Physique peu détaillée.
-
-
 
 ### Modèle de Potts cellulaire
 
@@ -67,13 +66,7 @@ Aspects négatifs:
 
 ![Cellular Potts model](images/potts_model.png)
 
-### Modèles continus
-
-Ces méthodes ne considèrent plus le tissus comme un ensemble
-d'éléments discrets en interaction, mais plutôt l'ensemble du tissu
-comme un continuum.
-
-#### Méthodes par éléments finis
+### Méthodes par éléments finis
 
 C'est la discrétisation d'un système d'équations continues dans l'espace.
 Dans le cas de la modélisation d'une **couche**, apicale par exemple,
