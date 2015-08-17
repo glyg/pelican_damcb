@@ -1,10 +1,9 @@
 title: Gathering thoughts for Euroscipy 2015
 slug: gathering_thoughts
 date:
-tags: drosophila, modelling, python
+tags: drosophila, modelling, python, scipy
 summary: I'm giving a talk at Euroscipy '15 in two weeks (waow). This post is
-  a place to gather thoughts on what I'll be talking about and write
-  in the proceedings.
+  a place to gather thoughts on the leg-joint and tyssue libraries.
 
 
 So I'm giving a talk at Euroscipy at the end of the summer on
@@ -126,12 +125,12 @@ def get_faces(graph, as_array=True):
     as_array: bool, optional, default `True`
       if `True`, the output of `subraph_isomorphism` is converted
       to a (N, 3) ndarray.
+
     Returns
     -------
     triangles:  list of gt.PropertyMaps or (N, 3) ndarray
       each line corresponds to a triplet (cell, jv0, jv1)
-      where cell, jv0 and jv1 are indices of the input graph
-      if
+      where cell, jv0 and jv1 are indices of the input graph.
     '''
     tri_graph = gt.Graph()
     ## the vertices
@@ -153,11 +152,23 @@ pattern uniquely defines the set of faces.
 The `triangles` array then served as a `MultiIndex` for a pandas `DataFrame`
 called `faces`. Each of the vertex index was repeated as many times as
 necessary, and it was then easy to pick the correct data to compute the desired
-crossproduct, and do sums for each cells (something like `faces['sub_areas'].sum(level='cell')`).
+crossproduct, and do sums for each cells (something like
+`faces['sub_areas'].sum(level='cell')`).
 
-According to `git log`, it took me about three weeks to vectorize completely the geometry and gradient computation. 
+According to `git log`, it took me about three weeks to vectorize completely the
+geometry and gradient computation, but the effort was worth it, with a time gain
+about two orders of magnitudes (unfortunately, I didn't document properly the
+successive gains in computing time), close to the 24 to 1 hours goal I bragged
+about in the abstract, at least on a relatively simple test case (you saw it
+coming didn't you?).
 
+But then... I spent the next two months (!) trying to integrate back my new
+`faces` DataFrame within the general framework. The main hurdle comes when the
+graph topology changes, which creates indexes mis-alignments and synchronization
+nightmares. Maybe it's my fault for not doing this at the proper level, or not
+specifying things more clearly; alternatively, graph-tool is not that adapted to
+3D geometry computations and it's time for some new API design.
 
-
-
-I learned C++ and CGAL!
+So at the beginning of May, I decided to reboot the project, and started working
+on [tyssue](https://github.com/CellModels/tyssue). As this post is already too
+long,  I'll discuss this on the next one.
