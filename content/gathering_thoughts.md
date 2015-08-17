@@ -2,19 +2,24 @@ title: Gathering thoughts for Euroscipy 2015
 slug: gathering_thoughts
 date:
 tags: drosophila, modelling, python, scipy
-summary: I'm giving a talk at Euroscipy '15 in two weeks (waow). This post is
-  a place to gather thoughts on the leg-joint and tyssue libraries.
+summary: I'm giving a talk at Euroscipy '15 in two weeks (waow). This post is a place to gather thoughts on the `leg-joint` and `tyssue` libraries.
 
+### Intro
 
-So I'm giving a talk at Euroscipy at the end of the summer on
+So I'm giving a talk at EuroScipy at the end of the summer on the code I
+developed to model leg-joint formation in the drosophila leg imaginal disk. A
+lot as moved since I submit the abstract. So here are some thoughts on what
+happened, and what motivated the switch to a new, more generic library.
 
-# The talk abstract
+The talk abstract is a good introduction to the project.
+
+### The talk abstract
 
 Biological tissues, and more particularly
 [epithelia](http://en.wikipedia.org/wiki/epithelium) are very
 particular kinds of material. Not only do they behave like solids
 _and_ liquids at the same time (think shaving foam), they are also
-governed by the behaviour of their constituent individual
+governed by the behavior of their constituent individual
 cells. Biological processes (a bunch of incredibly complex chemical
 reactions) and physics are intertwined so that complex forms emerge
 from initially smooth tissues.
@@ -30,7 +35,7 @@ we demonstrated that apoptotic cells had an active role in shaping
 this fold (which will later become a joint in the adult fly's
 leg). Cells die on a ring around the socket shaped tissue (one cell
 thick, and about 200 µm in diameter), they contract and pull on their
-neighbours, initiating changes in the tissue properties.
+neighbors, initiating changes in the tissue properties.
 
 In this presentation, I will describe how we use python to develop a
 numerical model of this epithelium. The
@@ -53,12 +58,14 @@ browsed
 
 
 
-# What's new since this was written
+### What's new since this was written
 
 The `leg_joint` code was developed while our understanding of the biology was
 progressing  at a fast pace, as Magali's team accessed new genetic tools and
 gradually improved the fluorescence microscopy images of the drosophila's leg
 disk. That left little room for API design, or optimization.
+
+#### Optimization
 
 So I started refactoring once the paper was published. The performance
 bottleneck was quite obvious: the gradient descent code was called locally (only
@@ -162,6 +169,8 @@ successive gains in computing time), close to the 24 to 1 hours goal I bragged
 about in the abstract, at least on a relatively simple test case (you saw it
 coming didn't you?).
 
+#### Refactoring
+
 But then... I spent the next two months (!) trying to integrate back my new
 `faces` DataFrame within the general framework. The main hurdle comes when the
 graph topology changes, which creates indexes mis-alignments and synchronization
@@ -171,4 +180,4 @@ specifying things more clearly; alternatively, graph-tool is not that adapted to
 
 So at the beginning of May, I decided to reboot the project, and started working
 on [tyssue](https://github.com/CellModels/tyssue). As this post is already too
-long,  I'll discuss this on the next one.
+long,  I'll discuss this on the next post.
