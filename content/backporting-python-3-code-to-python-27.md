@@ -1,7 +1,7 @@
 title: Backporting python 3 code to python 2.7
 slug: backporting-python-3-code-to-python-27
 date: 04-23-2014 04:54:41
-tags: python 3.x, python 2.x, 3to2
+tags: python, 3to2
 summary:An adventure in backporting, unfiltered for stupid mistakes
 
 We decided to develop
@@ -18,7 +18,7 @@ So I thought I would document the porting of the code, so here we go.
 
 ## A script to put a correct header on top of each file.
 
-Adding `__from__ future import ...` statements on top of ou file goes
+Adding `__from__ future import ...` statements on top of your file goes
 a long way in porting the code, making most of the new feature from
 python 3 available to 2.x code.
 

@@ -12,17 +12,19 @@ Current projects
 
 ### Bio-physical model of an epithelium undergoing morphogenesis
 
+<hr/>
+
+[**This project was published in Nature on February 12 2015!**](http://dx.doi.org/10.1038/nature14152)
+
+<hr/>
+
+
 We have developed a simple model of a drosophila
 [epithelium](http://en.wikipedia.org/epithelium) that we use to study
 the role of apoptosis in tissue folding.
 
 ![Preview of the leg joint project]({filename}/images/show_case_leg-joint.png)
 
-<hr/>
-
-[This project was published in Nature on February 12 2015!](http://dx.doi.org/10.1038/nature14152)
-
-<hr/>
 
 It is now integrated in the [`tyssue`](https://github.com/CellModels/tyssue)
 mutli-physics epithelium modeling library.

@@ -1,7 +1,7 @@
-title: From leg-joint to tyssue, a refactoring story - Ep. 1 
+title: From leg-joint to tyssue, a refactoring story - Ep. 1
 slug: gathering_thoughts
 date:
-tags: drosophila, modelling, python, scipy
+tags: drosophila, modeling, python, scipy
 summary: I'm giving a talk at Euroscipy '15 in two weeks \o/ \o/... This post is a place to gather thoughts on the `leg-joint` and `tyssue` libraries, of which I'll be talking.
 
 

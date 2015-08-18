@@ -1,7 +1,7 @@
 title: PyConFr - un rapport
 slug: pyconfr2014
 date:
-tags: python fr
+tags: python, fr
 summary: Un bref résumé de ce que j'ai vu à la conférence python francophone 2014
 
 
