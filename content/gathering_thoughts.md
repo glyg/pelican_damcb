@@ -2,20 +2,22 @@ title: Gathering thoughts for Euroscipy 2015
 slug: gathering_thoughts
 date:
 tags: drosophila, modelling, python, scipy
-summary: I'm giving a talk at Euroscipy '15 in two weeks (waow). This post is a place to gather thoughts on the `leg-joint` and `tyssue` libraries.
+summary: I'm giving a talk at Euroscipy '15 in two weeks \o/ \o/... This post is a place to gather thoughts on the `leg-joint` and `tyssue` libraries, of which I'll be talking.
+
 
 ### Intro
 
-So I'm giving a talk at EuroScipy at the end of the summer on the code I
-developed to model leg-joint formation in the drosophila leg imaginal disk. A
-lot as moved since I submit the abstract. So here are some thoughts on what
+So I'm giving a [talk](https://www.euroscipy.org/2015/schedule/presentation/24/)
+at [EuroScipy](https://EuroScipy.org/2015) at the end of the summer (hooray!).
+It is based  on the code I developed to model fold formation in the
+drosophila leg imaginal disk, which was published earlier this year. A lot as
+moved since I submitted the abstract. So here are some thoughts on what
 happened, and what motivated the switch to a new, more generic library.
 
-The talk abstract is a good introduction to the project.
 
-### The talk abstract
+Here is the submitted abstract (I'm all about code re-use)
 
-Biological tissues, and more particularly
+>Biological tissues, and more particularly
 [epithelia](http://en.wikipedia.org/wiki/epithelium) are very
 particular kinds of material. Not only do they behave like solids
 _and_ liquids at the same time (think shaving foam), they are also
@@ -24,7 +26,7 @@ cells. Biological processes (a bunch of incredibly complex chemical
 reactions) and physics are intertwined so that complex forms emerge
 from initially smooth tissues.
 
-Along advanced imaging techniques and genetic manipulation of model
+>Along advanced imaging techniques and genetic manipulation of model
 organism, biophysical modeling is key in understanding these shape
 changes, or morphogenesis. We studied the role of programmed cell
 death, or [apoptosis](http://en.wikipedia.org/wiki/apoptosis) in the
@@ -37,33 +39,44 @@ leg). Cells die on a ring around the socket shaped tissue (one cell
 thick, and about 200 µm in diameter), they contract and pull on their
 neighbors, initiating changes in the tissue properties.
 
-In this presentation, I will describe how we use python to develop a
+>In this presentation, I will describe how we use python to develop a
 numerical model of this epithelium. The
 [leg-joint](https://github.com/glyg/leg-joint) module is based on
 Tiago Peixoto's [graph-tool](http://graph-tool.skewed.de) library, and
 uses SciPy optimization routines to perform the gradient descent at
 the core of the dynamical simulation. The following topics will be discussed:
 
-* Visualization: plain matplotlib vs [vispy](http://vispy.org) vs
+>* _Visualization_: plain matplotlib vs [vispy](http://vispy.org) vs
   [Blender](http://www.blender.org).
 
-* Performance: can we go from 24 hrs per simulation to less than 1?
+>* _Performance_: can we go from 24 hrs per simulation to less than 1?
   The pure python vectorization and BoostPython/CGAL routes.
 
-* Future plans: towards a biological tissue physics engine.
+>* _Future plans_: towards a biological tissue physics engine.
 
-The code is showcased in a series of Jupyter Notebooks that can be
+>The code is showcased in a series of Jupyter Notebooks that can be
 browsed
 [here](http://nbviewer.ipython.org/github/glyg/leg-joint/tree/master/notebooks/).
 
 
+The three points above deserve some developments, so I'll do 3 posts, not in the original order, though.
 
-### What's new since this was written
+1. Performance - this post
+2. Future plans - not so future anymore - next post
+3. Visualization (where I'm least advanced) - the third one
+
+
+### The pitfalls of research driven developments
 
 The `leg_joint` code was developed while our understanding of the biology was
-progressing  at a fast pace, as Magali's team accessed new genetic tools and
+progressing at a fast pace, as Magali's team accessed new genetic tools and
 gradually improved the fluorescence microscopy images of the drosophila's leg
-disk. That left little room for API design, or optimization.
+disk. That left little room for API design, or optimization. I went for results
+straight ahead, tried to document and test, though not enough, but my time was
+well spent in maths (that bloody gradient), biology and getting correct figures.
+
+For the published version, getting a simulation of the full fold formation
+process takes about 24 hours on a single core, which is not sustainable ...
 
 #### Optimization
 
@@ -77,10 +90,21 @@ SciPythonista (if that's a thing), I started looking at vectorization strategies
 
 I started using graph-tool for its efficient management of dynamic graphs and
 graph drawing capacities. In this library, values attached to vertices and edges
-can be accessed as Numpy arrays through a wrapper class called a `PropetyMap`.
-You can access a subset of those values through _filtering_, i.e. defining a
-binary mask over the network. But filtering is not the same as indexing, for
-example you can do this with indexing:
+can be accessed as Numpy arrays through the `get_array` attribute of the
+[`PropetyMap`](http://graph-tool.skewed.de/static/doc/graph_tool.html#graph_tool.PropertyMap)
+class. But as the documentation warns:
+
+> The returned array does not own the data, which belongs to the property map. Therefore, if the graph changes, the array may become invalid and any operation on it will fail with a `ValueError` exception. Do not store the array if the graph is to be modified; store a copy instead.
+
+Furthermore, you can only set the 'true' values of the property map for the all
+array at once. Said otherwise, you can't use fancy indexing to set values of a
+given variable (e.g. the `x` coordinate) of a subset of the graph's vertices
+directly, you have to modify a copy of the array and feed it back to the
+`PropertyMap`.
+
+You can access a subset of the graph through _filtering_, i.e.
+defining a binary mask over the network. But filtering is not the same as
+indexing, for example you can do this with indexing:
 
 ```python
 import numpy as np
@@ -95,25 +119,28 @@ to compute my epithelium geometrical properties. With PropertyMaps, you can
 *get* values from fancy indexing, but *setting* them back is more complicated,
 due to the rather convoluted way graph-tool mirrors the underlying C++ data and
 the property map `.a` attribute, that returns a numpy array. Of course
-graph-tool was not meant for that kind of computation, it's focus is on graphs, not geometry.
+graph-tool was not meant for that kind of computation, it's focus is on graphs'
+topology, not geometry or calculus.
 
 The cell's area is a good example for the type of computation I was trying to
 run. It is computed as the sums of the cell's sub-faces areas, which are
-computed as a cross product of two sub-face vectors:
+themselves half the norm of cross product of two sub-face vectors:
 
 ![A cell segmented in triangles](images/cell_area.png)
 
 The area of the sub-face is $A_{\alpha ij} = || r_{\alpha i} \times r_{\alpha j} || / 2$.
 
-Cross product works just fine with numpy arrays, but to compute it, I need to
-repeat each vector twice for each adjacent face, hence my indexing issue with
-graph-tool property maps. This motivated the passage to `pandas` DataFrames to
-do the geometrical computing. Fancy indexing is what pandas is made for, isn't it?
+Cross product works just fine with numpy 2D arrays, but to compute it, I need to
+repeat each vector twice for each adjacent face, sum over the cells, and put
+this back in the property map holding the cell area, for future use. Hence my
+indexing issue with graph-tool property maps. This motivated the passage to
+`pandas` DataFrames to do the geometrical computing. Fancy indexing is what
+pandas is made for, isn't it?
 
-Here is an outline of the strategy I used to gather the data from the graph's propertymap and turn them into dataframes:
+Here is an outline of the strategy I used to gather the data from the graph's property maps and turn them into `DataFrames`:
 
 * First find all the faces in the graph, using graph-tool's
-`subgraph_isomorphism`
+`subgraph_isomorphism`, and get their corresponding  
 
 ```python
 def get_faces(graph, as_array=True):
