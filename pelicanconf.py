@@ -28,7 +28,7 @@ LINKS = (
     ('Graph-tool', 'http://graph-tool.skewed.de/'),)
 
 # Social widget
-SOCIAL = (('GitHub', 'https://github.org/DamCB'),
+SOCIAL = (('GitHub', 'https://github.org/glyg'),
           ('Twitter', 'https://twiter.com/elagachado'),
           ('LinkedIn', 'https://www.linkedin.com/pub/guillaume-gay/27/a22/492'),)
 
@@ -56,7 +56,7 @@ SITELOGO = 'images/logo_blackbg.png'
 HIDE_SITENAME = True
 
 ## We don't need those (there are too few for now)
-DISPLAY_TAGS_ON_SIDEBAR = False
+DISPLAY_TAGS_ON_SIDEBAR = True
 
 STATIC_PATHS = ['images']
 TYPOGRIFY = True

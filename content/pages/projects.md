@@ -18,6 +18,16 @@ the role of apoptosis in tissue folding.
 
 ![Preview of the leg joint project]({filename}/images/show_case_leg-joint.png)
 
+<hr/>
+
+[This project was published in Nature on February 12 2015!](http://dx.doi.org/10.1038/nature14152)
+
+<hr/>
+
+It is now integrated in the [`tyssue`](https://github.com/CellModels/tyssue)
+mutli-physics epithelium modeling library.
+
+
 ### Tracking moving cell clusters
 
 We provide 3D + time tracking of nuclei to quantify the dynamics of a
