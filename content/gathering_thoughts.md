@@ -1,4 +1,4 @@
-title: Gathering thoughts for Euroscipy 2015
+title: From leg-joint to tyssue, a refactoring story - Ep. 1 
 slug: gathering_thoughts
 date:
 tags: drosophila, modelling, python, scipy
@@ -139,8 +139,20 @@ pandas is made for, isn't it?
 
 Here is an outline of the strategy I used to gather the data from the graph's property maps and turn them into `DataFrames`:
 
-* First find all the faces in the graph, using graph-tool's
-`subgraph_isomorphism`, and get their corresponding  
+1. First find all the triangular faces in the graph, using graph-tool's
+  `subgraph_isomorphism`, and get the indices of the 3 vertices (two junctions
+  and a cell).
+
+2. Use this as a `MultiIndex` to instanciate a `DataFrame` holding a copy of the
+  relevant data.
+
+3. Do the maths.
+
+4. Feed back the data to the graphs' property maps.
+
+Thanks to graph-tool, the first point is easy to achieve, and quite fast (like
+some seconds for a full 2000 cells simulation):
+
 
 ```python
 def get_faces(graph, as_array=True):
@@ -193,8 +205,8 @@ According to `git log`, it took me about three weeks to vectorize completely the
 geometry and gradient computation, but the effort was worth it, with a time gain
 about two orders of magnitudes (unfortunately, I didn't document properly the
 successive gains in computing time), close to the 24 to 1 hours goal I bragged
-about in the abstract, at least on a relatively simple test case (you saw it
-coming didn't you?).
+about in the abstract, at least on a relatively simple test case. At that point,
+"all" that was left was the fourth point of the list above.
 
 #### Refactoring
 
@@ -207,4 +219,4 @@ specifying things more clearly; alternatively, graph-tool is not that adapted to
 
 So at the beginning of May, I decided to reboot the project, and started working
 on [tyssue](https://github.com/CellModels/tyssue). As this post is already too
-long,  I'll discuss this on the next post.
+long,  I'll discuss this on the next one.
