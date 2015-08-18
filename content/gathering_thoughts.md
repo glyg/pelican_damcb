@@ -78,7 +78,7 @@ well spent in maths (that bloody gradient), biology and getting correct figures.
 For the published version, getting a simulation of the full fold formation
 process takes about 24 hours on a single core, which is not sustainable ...
 
-#### Optimization
+### Optimization
 
 So I started refactoring once the paper was published. The performance
 bottleneck was quite obvious: the gradient descent code was called locally (only
@@ -208,7 +208,7 @@ successive gains in computing time), close to the 24 to 1 hours goal I bragged
 about in the abstract, at least on a relatively simple test case. At that point,
 "all" that was left was the fourth point of the list above.
 
-#### Refactoring
+### Refactoring
 
 But then... I spent the next two months (!) trying to integrate back my new
 `faces` DataFrame within the general framework. The main hurdle comes when the
