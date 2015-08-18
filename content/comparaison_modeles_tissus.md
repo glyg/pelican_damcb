@@ -1,6 +1,6 @@
 title: Un tour des différentes méthodes de modélisation
 slug: comparaison_modeles
-date:
+date: 08-16-2015
 tags: modeling, epithelium, tyssue, fr
 summary: Ce post a pour objectif de discuter les différentes stratégies de modélisation d'un tissu biologique.
 

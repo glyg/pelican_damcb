@@ -1,7 +1,7 @@
 title: Teaser
 slug: teaser
 date:
-tags: leg-joint Drosophila
+tags: tyssue, drosophila
 summary: Comming soon
 
 <iframe src="//player.vimeo.com/video/107188046" width="800"
