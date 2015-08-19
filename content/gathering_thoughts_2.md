@@ -11,7 +11,7 @@ That's the second blog post of three reflecting on the modeling.
 3. Visualization - even more future !
 
 
-## Previously
+#### Previously
 
 I started optimizing, then refactoring the `leg-joint` code to gain performance.
 As I was doing this, I realized it would be cleverer to go all the way back to
@@ -26,6 +26,8 @@ turns out Cyprien and his colleges recently published a [milestone
 paper](http://dx.doi.org/10.1140/epje/i2015-15033-4) on continuous models; both
 were keen on trying cell based models, and the leg disk is of course very rich
 on this regard. So while I'm generalizing geometry, why not physics?
+
+#### The road ahead
 
 So how do we get there?
 
@@ -62,7 +64,6 @@ simulations have been developed. The interested reader will find a very clear,
 useful and complete discussion of the topic in [C.V.T Tamulonis PhD
 dissertation](http://dare.uva.nl/record/1/394902). Seriously, I can't stress
 enough how this work is nice and complete!
-
 
 For now, I just drafted a tree of the different models, as a basis for the
 discussion:
@@ -102,8 +103,8 @@ individual's **behavior** influences the overall shape of the tissue. We'll see 
 The next branching is between lattice based and lattice free models.
 
 _Lattice based_ were developed first, inheriting directly from early cybernetics
-research (Norman Wiener, John Von Neumann) on [**cellular
-automata**](https://en.wikipedia.org/wiki/Cellular_automaton). Conway's game of
+research (Norman Wiener, John Von Neumann) on [cellular
+automata](https://en.wikipedia.org/wiki/Cellular_automaton). Conway's game of
 life was described in 1970, and you can find a nice python implementation by
 Jake VanderPlas himself
 [here](https://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/). It's
@@ -124,4 +125,81 @@ phenomenological, it does not really capture the _mechanical_ aspects of the
 tissue.
 
 In _lattice free models_, the system's space (usually 2 or 3 dimensional)  is
-continuous and the objects are described by their metric in that space. An early split is between
+continuous and the objects are described by their metric in that space. An early
+split is between models made of _descrete spherical elements_  and the ones
+relying on a _vector based_ description. In the former class, cells are
+described as spheres (like in [Chaste](http://www.cs.ox.ac.uk/chaste/)) or
+smaller particle clouds, as in the work by [P.E van Liedekerke et
+al.](http://dx.doi.org/10.1103/PhysRevE.81.061906) cited by Tamulonis.
+
+The later branch divides into finite elements models (see [CVT Tamulonis
+](http://dare.uva.nl/record/1/394902) again) and vertex models, where
+`leg-joint` and `tyssue` fit (ouf! as we say in French). Thanks to the close correspondence between those model architecture and the cell boundaries, they are well adapted to the description of contiguous, one cell thick tissues as the epithelium we're interested in.
+
+Now that we know where we are in the grand scheme of things, let's dig on the
+library's structure. We're at step 3 already!
+
+### Library architecture and API design.
+
+#### Prolégomène: libraries vs standalone software.
+
+Software can come in various forms. Traditionally, and as is the case for most
+of the works presented above, simulations would be developed in a compiled
+language such as C++ (the uncontested giant in the field) and distributed as
+standalone executables. I'm a python user, and prefer to use libraries, and
+develop by `import`ing what I need when I need it. I feel that doing development
+in the Jupyter notebook gives me a lot of freedom to explore and hack. The
+user/developer frontier is blurry in the scipy community for a good reason:
+that's a very efficient way of developping software. So, contrary to e.g.
+**Chaste**, `tyssue` is designed as a modular, hackable library.
+
+#### Object architecture and design patterns
+
+##### Objects to consider
+
+To fix the ideas, let's work on a minimal 2D example of what we try to model.
+Generalizing to more complex geometries is deferred to further headaches :-p.
+
+Here is our 2D three cells epithelium:
+
+![A minimal 3 cells epithelium](images/minimal_eptm_2D.png)
+
+The epithelium contains **cells** indexed by Greek letters, **junction
+vertices**, indexed by Latin letters, and  **junction edges**. The blue links
+denote a **neighborhoud** relation between two cells. In 2D, the edges can be
+described as pairs of _Halfedges_ ([see the documentation on Halfedge Data
+Structures in CGAL](http://doc.cgal.org/latest/HalfedgeDS/index.html)). In 3D,
+this concept is generalized by the [_Linear cell complex_
+](http://doc.cgal.org/latest/Linear_cell_complex/index.html#Chapter_Linear_Cell_Complex)
+structure, made of connected _Darts_. Both Halfedges and Darts hold information
+on their source, target and the cell they are associated to. So the pair of
+Halfedges between vertices $i$ and $j$ should be indexed as $i j, \alpha$ and $j
+i, \beta$.
+
+To all those elements are associated data: geometric characteristics, parameter
+values and so on. We want to be able to get and set these data by single
+elements  or through fancy indexing. Ideally, without copying it, and in a
+transparent way to the python user. The above mentioned concepts are well
+defined and optimized in CGAL, and it would be a waste not to rely on all this
+good work. But here comes the conundrum, the very same I
+[faced](gathering_thoughts.html) with `graph-tool`: how to ensure a correct data
+dialog between C++ and python? Wrapping C++ and Numpy arrays is [not
+trivial](https://github.com/CellModels/tyssue/issues/5), and I feel a bit at
+lost here (dear reader, if you have the magic bullet solution to this problem,
+feel very free to comment here or on github!).
+
+One way I see this could play nicely, is to let the C++ side of things
+completely ignore the data, and just let it manage indexing. As before, we use
+the C++ structure to return indices (in the form of a sequence or an iterable),
+and we keep all the data on the python side of things. It might not be the most
+efficient way of doing things, but I feel it could avoid troubles (again, dear
+reader, any ideas welcome).
+
+
+
+
+##### Agent-like interactions and behavior
+
+##### Events, signals and synchronicity
+
+#####
