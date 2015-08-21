@@ -70,8 +70,8 @@ discussion:
 
 ![Tissue models family tree](images/models_family_tree.png)
 
-The underlying dragonfly wing is from figure 162 of _On Growth and Form_ (p.476
-of the above linked edition). On the last line are examples (not even close to
+The underlying dragonfly wing is from Figure 162 of _On Growth and Form_ (p.476
+of the above linked edition). On the tree tips are examples (not even close to
 exhaustive) of implementation for each models. Bold names refer to softwares,
 slanted to a researcher and it's publications.
 
@@ -174,32 +174,128 @@ this concept is generalized by the [_Linear cell complex_
 structure, made of connected _Darts_. Both Halfedges and Darts hold information
 on their source, target and the cell they are associated to. So the pair of
 Halfedges between vertices $i$ and $j$ should be indexed as $i j, \alpha$ and $j
-i, \beta$.
+i, \beta$. In 3D, there will be a fourth index for a given Dart, giving the
+associated face of the cell, see the discussion on Darts orbit and $\beta_i$
+operators on CGAL's doc.
 
-To all those elements are associated data: geometric characteristics, parameter
-values and so on. We want to be able to get and set these data by single
-elements  or through fancy indexing. Ideally, without copying it, and in a
-transparent way to the python user. The above mentioned concepts are well
-defined and optimized in CGAL, and it would be a waste not to rely on all this
-good work. But here comes the conundrum, the very same I
-[faced](gathering_thoughts.html) with `graph-tool`: how to ensure a correct data
-dialog between C++ and python? Wrapping C++ and Numpy arrays is [not
-trivial](https://github.com/CellModels/tyssue/issues/5), and I feel a bit at
-lost here (dear reader, if you have the magic bullet solution to this problem,
-feel very free to comment here or on github!).
+The ensemble of those objects and their relations is called the **topology** of
+the system. Perhaps abusively, said topology _also includes the set of
+geometrical points associated with the vertices_ (but nothing more, see below).
 
-One way I see this could play nicely, is to let the C++ side of things
-completely ignore the data, and just let it manage indexing. As before, we use
-the C++ structure to return indices (in the form of a sequence or an iterable),
-and we keep all the data on the python side of things. It might not be the most
-efficient way of doing things, but I feel it could avoid troubles (again, dear
-reader, any ideas welcome).
+#### Data Structures
+
+To the topology is associated data: geometric characteristics, parameter values
+and so on. We want to be able to get and set these data by single elements  or
+through fancy indexing. Ideally, without copying it, and in a transparent way to
+the python user. But the above mentioned concepts are well defined and optimized
+in CGAL, and it would be a waste not to rely on all this good work. Yet, most of
+this data is irrelevant to CGAL: we could for example associate a color to a
+cell for representation purpose, that needs to be dynamically allocated, etc.,
+all that in an interactive python session. graph-tool does a very good job at
+managing that with `PropertyMaps`, but we  [saw](gathering_thoughts.html) it was
+not fitting exactly our needs. Wrapping C++ and Numpy arrays is [not
+trivial](https://github.com/CellModels/tyssue/issues/5).
+
+So here is how I see this: let the C++ side of things completely ignore the data --
+to the exception of the positions of the vertices in space, which CGAL need, and
+will receive special treatment --, and just let it manage topology. This way the
+only
+[`CellAttribute`](http://doc.cgal.org/latest/Combinatorial_map/classCellAttribute.html)
+associated with a CGAL object is its index (plus the `Point` for vertices).
+
+The CGAL/python interface is then just a matter of passing the indices (as
+`std::vectors<int>`) in read only mode to python, and updating the points back and forth. Python side, the core data structure is then comprised of 3 DataFrames (4 in
+3D actually):
+
+1. `cell_df`, indexed by the `Index` `cell_idx`
+
+2. `jv_df`, indexed by the `Index` `jv_idx`
+
+3. `je_df`, indexed by the `MultiIndex` `je_idx`, itself comprised of a `(srce,
+trgt, cell)` triple (e.g. ${i, j, \alpha}$). In 3D, it
+would be a quadruple `(srce, trgt, face, cell)`.
+
+Here is a sketch summarizing the above, along with the behavior and
+visualization aspects I'll discuss next.
+
+![Data flows and management](images/tyssue_data_management.svg)
+
+You can find a toy implementation (CGAL independent) in [this
+notebook](
+http://nbviewer.ipython.org/github/CellModels/tyssue/blob/master/notebooks/core_architecture/Simulation%20structures%20and%20specification.ipynb#Python-implementation-of-the-class-structure),
+along with examples of simple computation combining data from cells and
+junctions.
+
+##### A note on time
+
+I haven't spoken of the time dimension yet. The above description gives a static
+view of the tissue. Of course, the whole goal is to look at evolutions. Time
+will be a global attribute of the system. For all the DataFrames, we can
+construct a Panel where the fourth dimension is the time component, stacking up
+static views of the tissue (this can also be achieved via a supplementary 't'
+index for each dataframe). Whether this is feasible, or it's better to record
+the data at each time step is to be determined. For small systems, the former
+will be easier, but might not scale, and some kind of buffering might be needed
+(to be continued, data management is not my strong suit).
+
+##### External constrains and supra cellular components
+
+Further down the road, it might be necessary to include other elements, for
+example the extra-cellular matrix, which by definition is not included in this
+framework. If its shape is simple and static enough, this could be described in
+terms of a force _field_ in the space surrounding the tissue. One could also
+envision a mixed continuous - cell based model, where the ECM is described as a
+finite elements triangulated volume. It is not clear to me how to manage contact
+points here, I'm sure that will be fun. Apart from the ECM, one can think of
+trans-cellular actin cables or an egg shell constraining the epithelium.
+
+On that matter, management of contact points and mesh collision is not trivial,
+but it looks like the great folk at CGAL [have this sorted out for
+us](http://stackoverflow.com/questions/22900932/cgal-meshes-intersection-collision).
 
 
+##### Physics
+
+The architecture described above describes the state space of the epithelium,
+and it's associated parameters. We can then add physical data: forces or
+gradients, for example. If the specific columns to consider depend on the
+physics engine, the resolution of the dynamical equations (wether through
+gradient descent, ODEs, etc.) should be independent of the topology at one point during the simulation.
+
+##### Agent-like behavior
+
+As I said earlier, cells are not passive chunks of material, but **individuals**
+displaying different behaviors, either individually or collectively. In this
+sense, cells are agents. This must be reflected in the library architecture as
+to make it easy to translate in the simulation the biologist's insight of the
+modeled biological scenario. Here are some examples:
+
+* Cell growth
+* Cell division
+* Cell intercalation (aka Type 1 transition)
+
+* Apoptosis
+
+For each of those behaviors, one cell or a group of cells will be implicated
+(the `actors`), and some specification on the physics involved that might look
+like a list of `actuators` (I'm thinking for example at the actin apico-basal
+cable in the fold formation scenario) specifying the interactions and their
+application points. Every behavior can trigger a change in topology, requiring a
+re-indexing from CGAL, and sets the system off-equilibrium, which is resolved by
+the physics engine. Those concept are still in early development, and the API is
+still sketchy here.
 
 
-##### Agent-like interactions and behavior
+##### Events, signals and asynchronicity
 
-##### Events, signals and synchronicity
+Associated with the multi-agent pattern comes the idea that those agents, the
+cells, could act asynchronously, each behavior sending signals to neighboring
+cells and the hole epithelium. At each time step, we can imagine to gather all
+the ongoing behaviors (cell 123 might divide, while cells 234, 235, 236, and 244
+undergo a type 1 transition) and solve the physics system only once for the
+whole tissue. Once again, this is still a bit sketchy, and any comments are
+welcome.
 
-#####
+### Next step: data viz!
+
+This vast subject (3D! 3D+time!, `vispy`!, `webGL`!) will wait next post.

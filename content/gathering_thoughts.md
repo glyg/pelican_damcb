@@ -62,7 +62,7 @@ browsed
 The three points above deserve some developments, so I'll do 3 posts, not in the original order, though.
 
 1. Performance - this post
-2. Future plans - not so future anymore - next post
+2. Future plans - not so future anymore - [next post](gathering_thoughts_2.html)
 3. Visualization (where I'm least advanced) - the third one
 
 
