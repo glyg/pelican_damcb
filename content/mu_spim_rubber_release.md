@@ -15,8 +15,15 @@ quand même la concrétisation de quelques mois de remue-méninges. Je n'ai pas
 beaucoup de temps pour écrire une documentation détaillée.  Les anglophones
 peuvent se référer au site du projet (où on trouvera aussi des images).
 
+<hr/>
 
-## Help wanted, à l'aide!!
+## Une graîne de cumin
+
+![Mu-spim image of a cumin seed](images/mu-spim_graine_de_cumin.png)
+
+
+
+### Help wanted, à l'aide!!
 
 * Vulgarisation / divulagation scientique (amis p'tit debs..)
 * Communication scientifique // scientific communication
@@ -30,9 +37,17 @@ peuvent se référer au site du projet (où on trouvera aussi des images).
 
 
 
-## One video
+### One video
 
 
 <iframe src="https://player.vimeo.com/video/138321561" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/138321561">Fleur s&ecirc;ch&eacute;e // Microscopy image of a flower stem. #mu-spim</a> from <a href="https://vimeo.com/user12210065">glyg</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+<hr/>
+
+
+<a href="https://zenodo.org/badge/latestdoi/8450/glyg/mu_spim"><img src="https://zenodo.org/badge/8450/glyg/mu_spim.svg" alt="10.5281/zenodo.30518"></a>
+
+
+
 
 Le projet mu-spim est sous licence CC-BY-NA-NC. guillaume@damcb.com
