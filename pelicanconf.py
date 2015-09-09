@@ -29,7 +29,7 @@ LINKS = (
 
 # Social widget
 SOCIAL = (('GitHub', 'https://github.org/glyg'),
-          ('Twitter', 'https://twiter.com/elagachado'),
+          ('Twitter', 'https://twitter.com/elagachado'),
           ('LinkedIn', 'https://www.linkedin.com/pub/guillaume-gay/27/a22/492'),)
 
 GITHUB_USER = 'glyg'
@@ -55,7 +55,6 @@ BOOTSTRAP_THEME = 'cosmo'
 SITELOGO = 'images/logo_blackbg.png'
 HIDE_SITENAME = True
 
-## We don't need those (there are too few for now)
 DISPLAY_TAGS_ON_SIDEBAR = True
 
 STATIC_PATHS = ['images']
@@ -106,7 +105,7 @@ SUMMARY_END_MARKER = "<!-- TEASER_END -->"
 # Following items are often useful when publishing
 
 DISQUS_SITENAME = "damcellbiology"
-GOOGLE_ANALYTICS = "UA-56836763-1"
+
 import os
 if not os.path.exists('_nb_header.html'):
     import warnings
