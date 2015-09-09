@@ -1,6 +1,6 @@
 title: Backporting python 3 code to python 2.7
 slug: backporting-python-3-code-to-python-27
-date: 04-23-2014 04:54:41
+date: 04-23-2014
 tags: python, 3to2
 summary:An adventure in backporting, unfiltered for stupid mistakes
 

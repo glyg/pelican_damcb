@@ -1,6 +1,6 @@
 title: Teaser
 slug: teaser
-date:
+date: 12-12-2015
 tags: tyssue, drosophila
 summary: Comming soon
 

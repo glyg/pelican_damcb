@@ -1,6 +1,6 @@
 title: PyConFr - un rapport
 slug: pyconfr2014
-date: 10-06-2015
+date: 06-10-2014
 tags: python, fr
 summary: Un bref résumé de ce que j'ai vu à la conférence python francophone 2014
 
