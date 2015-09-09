@@ -1,6 +1,6 @@
 title: Setting up my python working environment
 tags: scipy, howto
-date: 2014-09-15 12:38:15
+date: 09-15-2014
 slug: setting-up-a-scientific-python-working-environment
 
 

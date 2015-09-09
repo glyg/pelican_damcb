@@ -1,6 +1,6 @@
 title: The leg joint paper is out!
 slug: paper_out
-date:
+date: 02-12-2015
 tags: drosophila, modeling
 summary: Our work on the role of apoptosis in morphogenesis is out today!
 

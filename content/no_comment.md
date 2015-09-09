@@ -1,6 +1,6 @@
 title: No comment
 slug: no-comment
-date:
+date: 03-04-2015
 tags: pandas, optimization, scipy
 summary: Speaks for itself
 
