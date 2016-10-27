@@ -1,16 +1,17 @@
 Title: Projects
 Date: 2013-10-27 13:04:52
-modified: 2014-09-06 10:20
+modified: 2016-10-29 10:20
 tags:projects
 slug:projects
 authors: Guillaume Gay
 summary:The current projects of the company
 
-
-Current projects
-----------------
+The `tyssue` simulation library
+-----------------------------
 
 ### Bio-physical model of an epithelium undergoing morphogenesis
+
+
 
 <hr/>
 
