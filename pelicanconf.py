@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Guillaume Gay'
-SITENAME = u'DamCB'
+SITENAME = u'Morphogénie Logiciels'
 SITEURL = 'http://damcb.com'
 #SITEURL = 'http://damcb.com/index.html'
 # Uncomment following line if you want document-relative URLs when developing
@@ -28,7 +28,7 @@ LINKS = (
     ('Graph-tool', 'http://graph-tool.skewed.de/'),)
 
 # Social widget
-SOCIAL = (('GitHub', 'https://github.org/glyg'),
+SOCIAL = (('GitHub', 'https://github.org/DamCB'),
           ('Twitter', 'https://twitter.com/elagachado'),
           ('LinkedIn', 'https://www.linkedin.com/pub/guillaume-gay/27/a22/492'),)
 
@@ -36,7 +36,7 @@ GITHUB_USER = 'glyg'
 
 
 DISPLAY_PAGES_ON_MENU = False
-MENUITEMS = (('About DamCB', '/pages/aboutus.html'),
+MENUITEMS = (('About Morphogénie', '/pages/aboutus.html'),
              ('Projects', '/pages/projects.html'),
              ('Services', '/pages/what-we-do.html'),
              ('Tools', '/pages/tools.html'),
@@ -45,8 +45,8 @@ MENUITEMS = (('About DamCB', '/pages/aboutus.html'),
 ### Those are displayed on the index page, with one image, a title and a link
 DISPLAY_HEROITEMS = True
 HEROITEMS = (('images/logo_modeling.png', 'Projects', '/pages/projects.html'),
-             ('images/logo_data.png', 'Services', '/pages/what-we-do.html'),
-             ('images/logo_python.png', 'Tools', '/pages/tools.html'),)
+             ('images/logo_python.png', 'Tools', '/pages/tools.html'),
+             ('images/logo_data.png', 'Services', '/pages/what-we-do.html'),)
 
 THEME = 'themes/glyg'#''notmyidea'
 #BOOTSTRAP_THEME = 'flatly'
