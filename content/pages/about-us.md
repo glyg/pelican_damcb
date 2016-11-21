@@ -1,17 +1,16 @@
-Title: About DamCB
+Title: About Morphogénie
 Date: 2014-09-01 14:20
 Modified: 2014-09-06 14:20
 Category: Buisness
-Tags: about, damcb
+Tags: about, morpho
 Slug: aboutus
 Authors: Guillaume Gay
 Summary: About us
 
 
+Morphogénie Logiciels is a free software edition company located in Marseille.
+Our main focus is the development of the `tyssue` library.
 
-
-DamCB is a one person company under the French status of 'Entreprise Individuelle' founded by Guillaume Gay.
-We are currently located in Marseille.
 
 ## About Guillaume
 
